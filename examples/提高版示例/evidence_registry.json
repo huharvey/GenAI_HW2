@@ -1,0 +1,76 @@
+{
+  "S1": {
+    "title": "A survey on LLM-based multi-agent systems",
+    "year": 2024,
+    "authors": "Li et al.",
+    "summary_cn": "从工作流、基础设施、通信和挑战等角度总结 LLM-based 多智能体系统。",
+    "keywords": "LLM-based multi-agent systems survey workflow infrastructure challenges",
+    "url": "https://link.springer.com/article/10.1007/s44336-024-00009-2",
+    "source_type": "课程资料库",
+    "citation_id": "S1"
+  },
+  "S2": {
+    "title": "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
+    "year": 2023,
+    "authors": "Hong et al.",
+    "summary_cn": "提出面向软件开发的多智能体框架，用角色分工和结构化产物组织协作流程。",
+    "keywords": "LLM multi-agent framework roles software development workflow",
+    "url": "https://arxiv.org/abs/2308.00352",
+    "source_type": "课程资料库",
+    "citation_id": "S2"
+  },
+  "S3": {
+    "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+    "year": 2023,
+    "authors": "Wu et al.",
+    "summary_cn": "介绍通过多智能体对话构建 LLM 应用的方法，支持工具、人工介入和不同对话模式。",
+    "keywords": "AutoGen multi-agent conversation tools human-in-the-loop",
+    "url": "https://arxiv.org/abs/2308.08155",
+    "source_type": "课程资料库",
+    "citation_id": "S3"
+  },
+  "S4": {
+    "title": "LLM and Multi-Agent Systems in Algorithmic Trading: Taxonomy and Research Agenda",
+    "year": 2026,
+    "authors": "Sumin Pillai",
+    "summary_cn": "The deployment of large language models (LLMs) and multi-agent systems (MAS) in algorithmic trading has accelerated sharply since 2023, producing a fragmented literature spanning natural-language processing, reinforcement learning, and market microstructure. This paper provides the first structured taxonomy of this emerging field, organising existing work along five orthogonal dimensions: the functional role of the LLM within the trading stack (signal generation, research synthesis, execution, or risk oversight); the information modality processed (text, tabular, time-series, or multimodal); the learning paradigm (zero-shot prompting, supervised fine-tuning, or reinforcement learning from market feedback); the system architecture (single-agent versus coordinated multi-agent); and the evaluation standard applied (in-sample, out-of-sample backtest, or live market). Applying this taxonomy to more than forty papers published between 2019 and 2026, the survey identifies four open research gaps: the absence of a rigorous, cost-adjusted benchmark for LLM-generated signals; the underexplored failure modes of MAS under adversarial or illiquid conditions; the tension between prompt-engineering flexibility and reproducibility; and the near-complete absence of rigorous testing in non-US markets. The paper closes with a ten-question research agenda intended to guide empirical work over the next three years.",
+    "url": "https://doi.org/10.2139/ssrn.7017418",
+    "doi": "10.2139/ssrn.7017418",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM-based multi-agent systems definition architecture taxonomy",
+    "citation_id": "S4"
+  },
+  "S5": {
+    "title": "A Proposal for an LLM-Based Multi-Agent Architecture for Orchestrating Access to Multiple Data Sources",
+    "year": 2026,
+    "authors": "João Pinheiro, Yenier Izquierdo, Luiz Leme, Antonio Furtado, Marco Casanova",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.5220/0014894200004018",
+    "doi": "10.5220/0014894200004018",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM-based multi-agent systems definition architecture taxonomy",
+    "citation_id": "S5"
+  },
+  "S6": {
+    "title": "A Taxonomy for Autonomous LLM-Powered Multi-Agent Architectures",
+    "year": 2023,
+    "authors": "Thorsten Händler",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.5220/0012239100003598",
+    "doi": "10.5220/0012239100003598",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM-based multi-agent systems definition architecture taxonomy",
+    "citation_id": "S6"
+  },
+  "S7": {
+    "title": "Overview of Architecture-Based Design of Multi-Agent Systems",
+    "year": 2010,
+    "authors": "Danny Weyns",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.1007/978-3-642-01064-4_2",
+    "doi": "10.1007/978-3-642-01064-4_2",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM-based multi-agent systems definition architecture taxonomy",
+    "citation_id": "S7"
+  }
+}

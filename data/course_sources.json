@@ -1,0 +1,74 @@
+[
+  {
+    "title": "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
+    "year": 2023,
+    "authors": "Hong et al.",
+    "summary_cn": "提出面向软件开发的多智能体框架，用角色分工和结构化产物组织协作流程。",
+    "keywords": "LLM multi-agent framework roles software development workflow",
+    "url": "https://arxiv.org/abs/2308.00352",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+    "year": 2023,
+    "authors": "Wu et al.",
+    "summary_cn": "介绍通过多智能体对话构建 LLM 应用的方法，支持工具、人工介入和不同对话模式。",
+    "keywords": "AutoGen multi-agent conversation tools human-in-the-loop",
+    "url": "https://arxiv.org/abs/2308.08155",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "AFlow: Automating Agentic Workflow Generation",
+    "year": 2024,
+    "authors": "Zhang et al.",
+    "summary_cn": "将 Agent 工作流表示为可搜索结构，并利用执行反馈自动改进工作流。",
+    "keywords": "agentic workflow search execution feedback",
+    "url": "https://arxiv.org/abs/2410.10762",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "GPTSwarm: Language Agents as Optimizable Graphs",
+    "year": 2024,
+    "authors": "Zhuge et al.",
+    "summary_cn": "把语言 Agent 表示为可组合、可优化的图结构，研究节点和连接的优化。",
+    "keywords": "GPTSwarm language agents graph optimization",
+    "url": "https://arxiv.org/abs/2402.16823",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "Agents4PLC: Automating Closed-loop PLC Code Generation and Verification",
+    "year": 2024,
+    "authors": "Agents4PLC authors",
+    "summary_cn": "用检索、规划、编码、验证和调试 Agent 构成 PLC 代码生成与验证闭环。",
+    "keywords": "PLC code generation verification LLM agents industrial control",
+    "url": "https://arxiv.org/abs/2410.14209",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "A survey on LLM-based multi-agent systems",
+    "year": 2024,
+    "authors": "Li et al.",
+    "summary_cn": "从工作流、基础设施、通信和挑战等角度总结 LLM-based 多智能体系统。",
+    "keywords": "LLM-based multi-agent systems survey workflow infrastructure challenges",
+    "url": "https://link.springer.com/article/10.1007/s44336-024-00009-2",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "Model Context Protocol: What is MCP?",
+    "year": 2025,
+    "authors": "Model Context Protocol authors",
+    "summary_cn": "介绍连接 AI 应用与外部数据源、资源和工具的开放协议。",
+    "keywords": "MCP tools data resources protocol",
+    "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+    "source_type": "课程资料库"
+  },
+  {
+    "title": "A2A Protocol: Core Concepts",
+    "year": 2025,
+    "authors": "A2A Protocol authors",
+    "summary_cn": "介绍 Agent Card、Task、Message 和 Artifact 等 Agent 互操作概念。",
+    "keywords": "A2A agent interoperability agent card task message artifact",
+    "url": "https://a2a-protocol.org/latest/topics/key-concepts/",
+    "source_type": "课程资料库"
+  }
+]

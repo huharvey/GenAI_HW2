@@ -1,0 +1,96 @@
+{
+  "S1": {
+    "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+    "year": 2023,
+    "authors": "Wu et al.",
+    "summary_cn": "介绍通过多智能体对话构建 LLM 应用的方法，支持工具、人工介入和不同对话模式。",
+    "keywords": "AutoGen multi-agent conversation tools human-in-the-loop",
+    "url": "https://arxiv.org/abs/2308.08155",
+    "source_type": "课程资料库",
+    "citation_id": "S1"
+  },
+  "S2": {
+    "title": "Agents4PLC: Automating Closed-loop PLC Code Generation and Verification",
+    "year": 2024,
+    "authors": "Agents4PLC authors",
+    "summary_cn": "用检索、规划、编码、验证和调试 Agent 构成 PLC 代码生成与验证闭环。",
+    "keywords": "PLC code generation verification LLM agents industrial control",
+    "url": "https://arxiv.org/abs/2410.14209",
+    "source_type": "课程资料库",
+    "citation_id": "S2"
+  },
+  "S3": {
+    "title": "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
+    "year": 2023,
+    "authors": "Hong et al.",
+    "summary_cn": "提出面向软件开发的多智能体框架，用角色分工和结构化产物组织协作流程。",
+    "keywords": "LLM multi-agent framework roles software development workflow",
+    "url": "https://arxiv.org/abs/2308.00352",
+    "source_type": "课程资料库",
+    "citation_id": "S3"
+  },
+  "S4": {
+    "title": "GPTSwarm: Language Agents as Optimizable Graphs",
+    "year": 2024,
+    "authors": "Zhuge et al.",
+    "summary_cn": "把语言 Agent 表示为可组合、可优化的图结构，研究节点和连接的优化。",
+    "keywords": "GPTSwarm language agents graph optimization",
+    "url": "https://arxiv.org/abs/2402.16823",
+    "source_type": "课程资料库",
+    "citation_id": "S4"
+  },
+  "S5": {
+    "title": "A survey on LLM-based multi-agent systems",
+    "year": 2024,
+    "authors": "Li et al.",
+    "summary_cn": "从工作流、基础设施、通信和挑战等角度总结 LLM-based 多智能体系统。",
+    "keywords": "LLM-based multi-agent systems survey workflow infrastructure challenges",
+    "url": "https://link.springer.com/article/10.1007/s44336-024-00009-2",
+    "source_type": "课程资料库",
+    "citation_id": "S5"
+  },
+  "S6": {
+    "title": "基于AI大语言模型通义的本科生学术论文引言写作方法研究",
+    "year": 2025,
+    "authors": "婉莹 秦, 今 徐",
+    "summary_cn": "以通义千问为代表的大语言模型正成为辅助本科生学术论文写作的重要工具，但在引言写作的辅助方法上仍有待探索。本研究运用对比分析及数据统计方法，归纳本科生与通义写作引言的差异。研究发现，本科生写作引言虽思路多样且字数适宜，但存在结构不完整和文献引用不足的问题；通义写作引言效率高、结构完整，却有研究背景过多、缺少文献综述的缺陷。针对这些差异，本研究进一步发挥通义写作优势，并通过细化通义对话指令解决了现存问题。",
+    "url": "https://doi.org/10.61369/mec.2025010004",
+    "doi": "10.61369/mec.2025010004",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM agents 大语言模型智能体 定义 核心构成 与普通大语言模型区别 本科生 科普入门",
+    "citation_id": "S6"
+  },
+  "S7": {
+    "title": "基于大语言模型的高中生智能职业规划辅导系统的设计与实现",
+    "year": 2024,
+    "authors": "",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.69979/3041-0673.24.11.015",
+    "doi": "10.69979/3041-0673.24.11.015",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM agents 大语言模型智能体 定义 核心构成 与普通大语言模型区别 本科生 科普入门",
+    "citation_id": "S7"
+  },
+  "S8": {
+    "title": "“你说 ‘大牌’，我猜你是新加坡人?” —— 大语言模型识别与生成汉语变体的能力评估",
+    "year": 2026,
+    "authors": "Qiao Fang, Jingxia Lin",
+    "summary_cn": "摘要                     近年来，关于汉语变体的研究已取得丰富成果，涵盖语音、词汇、语法与语用等多个层面。然而，目前尚缺乏对大语言模型在多变体语境下处理能力的系统实证评估。本文作为初步探索，以词汇差异为切入点，选取中国大陆普通话、港式中文、台湾华语与新加坡华语四种主要变体，系统评估五款代表性大语言模型 (GPT-4o、Gemini 1.5 Pro、Claude 3 Opus、Spark 4.0 Ultra 与 DeepSeek V3) 在变体识别、语义理解与本地化生成任务中的表现。研究结果显示，模型普遍存在 “单向误判” 倾向，尤其易将新加坡华语误判为普通话，显示出对地域词义、语境与用法差异的理解偏差。在生成任务中，模型对新加坡华语的表现尤为薄弱，不仅难以准确识别本地义项，还频繁生成无文献支持的 “创义”，反映出训练语料在区域覆盖上的不足。本文揭示了当前主流 模型 在处理汉语变体时的能力边界与偏误类型，指出其区域适应性与语义精度仍有待提升。研究亦为未来多变体语料建设、评估框架与模型优化策略提供实证基础，强调将语言变体系统性纳入 自然语言处理 发展的重要性。",
+    "url": "https://doi.org/10.1515/glochi-2025-0017",
+    "doi": "10.1515/glochi-2025-0017",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM agents 大语言模型智能体 定义 核心构成 与普通大语言模型区别 本科生 科普入门",
+    "citation_id": "S8"
+  },
+  "S9": {
+    "title": "大语言模型赋能政务智慧化服务——以DeepSeek为例",
+    "year": 2025,
+    "authors": "",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.69979/3041-0673.25.06.020",
+    "doi": "10.69979/3041-0673.25.06.020",
+    "source_type": "Crossref 实时检索",
+    "keywords": "LLM agents 大语言模型智能体 定义 核心构成 与普通大语言模型区别 本科生 科普入门",
+    "citation_id": "S9"
+  }
+}
