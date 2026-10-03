@@ -47,6 +47,7 @@
   below: 8pt,
 )
 #set list(indent: 2.5em, body-indent: 0.6em)
+#show link: set text(fill: rgb("#244a73"))
 
 // Cover page
 #align(center)[
@@ -68,7 +69,15 @@
     [Student ID:], [3240104699],
     [Date:], [October 3, 2026],
   )
-  #v(4cm)
+  #v(0.8cm)
+  #text(size: 10pt)[
+    #link("https://github.com/huharvey/GenAI_HW2")[GitHub: huharvey/GenAI_HW2]
+    #v(7pt)
+    #link("HW2_Task1_Research_Report.pdf")[Task 1 Research Report]
+    #h(1em)
+    #link("HW2_Task2_Research_Report.pdf")[Task 2 Research Report]
+  ]
+  #v(2cm)
   #text(size: 11pt)[2026-2027 Autumn Semester]
 ]
 #pagebreak()
@@ -382,11 +391,34 @@ The main contribution is a clearer validation sequence: deterministic identifier
 
 = Submission Artifacts
 
-The submission consists of the runnable repository and README, the compiled overall report, and the two compiled research reports with their editable Typst sources. Terminal screenshots are stored in `docs/assets/`. The original Chinese reports and complete logs are preserved in these directories relative to the repository root:
+The submission archive, `GenAI_HW2_Submission.zip`, contains the three PDF documents listed below. Extract the archive before opening the reports and keep the files in the same directory so the document links can resolve.
+
+#figure(
+  table(
+    columns: (6.2cm, 1fr),
+    align: left,
+    inset: (x: 8pt, y: 7pt),
+    stroke: (bottom: 0.5pt + rgb("#d7dce2")),
+    fill: (x, y) => if y == 0 { rgb("#eef4f9") } else { none },
+    table.header([*Document*], [*Contents*]),
+    [#link("HW2_Report.pdf")[Overall Assignment Report]],
+    [This document: architectures, implementation changes, run results, extracted logs, and comparison.],
+    [#link("HW2_Task1_Research_Report.pdf")[Task 1 Research Report]],
+    [Edited English version of the baseline MAS research output and its evidence registry.],
+    [#link("HW2_Task2_Research_Report.pdf")[Task 2 Research Report]],
+    [Edited English version of the improved MAS research output and its evidence registry.],
+  ),
+  caption: [Clickable index of the three PDF submission documents.],
+  supplement: [Table],
+)
+
+The runnable code is available at #link("https://github.com/huharvey/GenAI_HW2")[github.com/huharvey/GenAI_HW2]. The #link("https://github.com/huharvey/GenAI_HW2/blob/main/README.md")[repository README] includes QUICK START instructions for environment setup, model configuration, and both task commands. Editable Typst sources and terminal screenshots are available in the #link("https://github.com/huharvey/GenAI_HW2/tree/main/docs")[repository's docs directory].
+
+The analysis in this report uses the locally archived Chinese reports and complete execution logs in these directories relative to the repository root:
 
 ```text
 outputs/task1_frozen_advanced_20261003_213736/
 outputs/task2_frozen_advanced_20261003_212723/
 ```
 
-The PDF versions accompany these sources under `output/pdf/`. Runtime credentials are read from a local `.env`; only the configuration template `.env.example` should be included when packaging the repository.
+The extracted log excerpts and screenshots needed to interpret the runs are included in this overall report. The local frozen directories are separate from the three-PDF archive. Runtime credentials are read from a local `.env`; the repository provides `.env.example` as the configuration template.

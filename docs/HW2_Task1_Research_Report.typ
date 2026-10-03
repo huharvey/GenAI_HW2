@@ -47,6 +47,7 @@
   below: 8pt,
 )
 #set list(indent: 2.5em, body-indent: 0.6em)
+#show link: set text(fill: rgb("#244a73"))
 
 #align(center)[
   #v(2.4cm)
@@ -55,7 +56,8 @@
   #text(size: 27pt, weight: "bold")[Task 1 Research Report]
   #v(0.8cm)
   #text(size: 16pt)[Reinforcement Learning for Quadrotor Trajectory Tracking]
-  #v(6.2cm)
+  #v(9cm)
+  #set text(size: 13pt)
   #table(
     columns: (6cm, 7cm),
     stroke: none,
@@ -66,10 +68,13 @@
     [Frozen run:], [`advanced_20261003_213736`],
     [Date:], [October 3, 2026],
   )
+  #set text(size: 11pt)
 ]
 #pagebreak()
 
 = Scope and Provenance
+
+Related documents: #link("HW2_Report.pdf")[Overall Assignment Report] and #link("HW2_Task2_Research_Report.pdf")[Task 2 Research Report]. Code and run instructions: #link("https://github.com/huharvey/GenAI_HW2")[GitHub repository]. Keep the three extracted PDFs in the same directory to use the document links.
 
 This report presents an edited English version of the final research report from Task 1, run `advanced_20261003_213736`. It preserves the run's evidence and conclusions while clarifying that missing abstracts are a limitation of the retrieved records. The original Chinese output, review, and trace remain in the frozen-output directory. No additional literature was retrieved for this edition. Citation identifiers such as `[S1]` refer only to this run's evidence registry.
 
