@@ -40,7 +40,7 @@ def choose_next(
     进入修订。返回 None 时交给 AutoGen 的模型选择器处理。
     """
 
-    names = {"PlannerAgent", "SearchAgent", "WriterAgent", "ReviewerAgent"}
+    names = {"PlannerAgent", "SearchAgent", "WriterAgent", "CitationAuditAgent", "ReviewerAgent"}
     for message in reversed(messages):
         source = getattr(message, "source", None)
         if source not in names:
@@ -51,9 +51,11 @@ def choose_next(
         if source == "SearchAgent":
             return "WriterAgent"
         if source == "WriterAgent":
+            return "CitationAuditAgent"
+        if source == "CitationAuditAgent":
             return "ReviewerAgent"
         if source == "ReviewerAgent":
-            if "REVISION_REQUIRED" in content and state["revisions"] < 1:
+            if "REVISION_REQUIRED" in content and state["revisions"] < 3:
                 state["revisions"] += 1
                 return "WriterAgent"
             return None
@@ -96,13 +98,31 @@ def build_team(model_client: Any) -> tuple[SelectorGroupChat, dict[str, int]]:
             "请直接输出完整修订稿。首次或修订完成后在末尾写 REPORT_DRAFT_DONE。"
         ),
     )
+    citation_auditor = AssistantAgent(
+        "CitationAuditAgent",
+        model_client=model_client,
+        tools=[audit_citations],
+        description="使用确定性工具检查报告中的引用编号是否合法。",
+        system_message=(
+            "你是引用审计 Agent。"
+            "收到 WriterAgent 的完整报告后，必须调用 audit_citations 工具，"
+            "并把 WriterAgent 的完整报告作为 report 参数传入。"
+            "不要自行猜测引用是否合法，必须以工具返回结果为准。"
+            "你的任务只负责引用编号检查，不负责评价报告内容。"
+        ),
+        reflect_on_tool_use=False,
+        max_tool_iterations=1,
+    )
     reviewer = AssistantAgent(
         "ReviewerAgent",
         model_client=model_client,
         description="检查报告的证据引用、范围和可核查性。",
         system_message=(
-            "你是审阅 Agent。阅读 WriterAgent 的完整报告，检查 [S#] 是否来自前面的检索结果。"
-            "检查是否存在无证据的事实、过度外推、重复和缺失引用。"
+            "你是审阅 Agent。请同时阅读 WriterAgent 的完整报告和 CitationAuditAgent 的审计结果。"
+            "CitationAuditAgent 负责确定性检查引用编号是否合法，你必须使用它的工具检查结果。"
+            "你主要负责语义层面的审阅：检查事实是否有证据支持、是否过度外推、"
+            "是否存在重要结论缺少引用，以及报告结构和论证是否合理。"
+            "如果 CitationAuditAgent 报告存在未知引用或没有引用，也必须要求修改。"
             "若需要修改，先列出最多 3 条明确修改意见，最后单独一行写 REVISION_REQUIRED。"
             "若报告可以提交，最后单独一行写 REVIEW_APPROVED。"
         ),
@@ -111,12 +131,12 @@ def build_team(model_client: Any) -> tuple[SelectorGroupChat, dict[str, int]]:
     state = {"revisions": 0}
     termination = TextMentionTermination("REVIEW_APPROVED", sources=["ReviewerAgent"]) | MaxMessageTermination(20)
     team = SelectorGroupChat(
-        [planner, searcher, writer, reviewer],
+        [planner, searcher, writer, citation_auditor, reviewer],
         model_client=model_client,
         selector_func=lambda messages: choose_next(messages, state),
         allow_repeated_speaker=True,
         termination_condition=termination,
-        max_turns=6,
+        max_turns=30,
     )
     return team, state
 
@@ -137,8 +157,7 @@ async def main() -> None:
         report = remove_markers(last_text(events, "WriterAgent"))
         review = last_text(events, "ReviewerAgent")
         # 审阅 Agent 可能忘记调用工具，课后仍可以查看这一条确定性的检查结果。
-        post_audit = audit_citations(report)
-        review = review + "\n\n课后引用复核：" + post_audit
+
         save_run_summary(
             out_dir,
             kind="advanced",

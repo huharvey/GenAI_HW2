@@ -29,6 +29,7 @@ from research_tools import get_registry, reset_registry
 
 
 async def main() -> None:
+    # 1. 获取用户输入、读取配置
     args = parse_args("基础版：顺序式多智能体技术调研助手")
     settings = load_settings()
     reset_registry()
@@ -38,6 +39,7 @@ async def main() -> None:
     # 单独创建带检索工具的 SearchAgent，避免把工具逻辑藏在框架内部。
     from research_tools import search_literature
 
+    # 2. 创建三个 Agent，分别负责规划、检索和写作。
     planner = AssistantAgent(
         "PlannerAgent",
         model_client=model_client,
@@ -50,7 +52,7 @@ async def main() -> None:
     searcher = AssistantAgent(
         "SearchAgent",
         model_client=model_client,
-        tools=[search_literature],
+        tools=[search_literature],      # serch agent = LLM + search_literature tool
         description="负责检索课程资料库和 Crossref 实时文献。",
         system_message=(
             "你是资料检索 Agent。根据 PlannerAgent 的关键词，至少调用一次 search_literature 工具。"
@@ -73,17 +75,21 @@ async def main() -> None:
             "最后单独一行写 BASIC_REPORT_DONE。"
         ),
     )
+    # 3. 把三个Agent组成Team，轮流发言，直到 WriterAgent 输出 BASIC_REPORT_DONE 或达到最大轮数。
+    # 三个 agent 有 shared conversation context
     team = RoundRobinGroupChat(
         [planner, searcher, writer],
         termination_condition=TextMentionTermination("BASIC_REPORT_DONE", sources=["WriterAgent"])
         | MaxMessageTermination(6),
         max_turns=6,
     )
+    # 4. 给Team一个任务
     task = (
         f"请围绕以下主题完成一次小型技术调研：{args.topic}\n"
         "要求：优先使用课程资料库和实时检索结果；报告面向本科生，避免堆砌术语。"
     )
     try:
+        # 5. 运行 Team，保存消息轨迹和最终报告
         events = await run_team(team, task, out_dir)
         report = remove_markers(last_text(events, "WriterAgent"))
         save_run_summary(

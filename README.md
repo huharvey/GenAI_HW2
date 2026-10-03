@@ -1,37 +1,93 @@
-# AutoGen 多智能体技术调研助手
+# Gen AI 作业 2 - Agent 与多智能体系统
 
-这是一个面向课程教学的 LLM-based 多智能体案例。学生输入一个技术主题，多个 Agent 协作检索资料、写作，并在提高版中审阅和修订报告。
+本仓库包含课程提供的原始多智能体系统（用于 Task 1），以及在其基础上改进后的多智能体系统（用于 Task 2）。
 
-案例基于 Microsoft AutoGen 的 AgentChat API，使用 OpenAI 兼容接口。本项目默认适配火山引擎 Ark Coding API，也可以替换为其他兼容服务。
+**Task 1 与 Task 2 冻结运行所使用的研究主题：**
 
-## 两个版本
+`Application of reinforcement learning to quadrotor trajectory tracking`
 
-### 基础版 `basic.py`
+## QUICK START
 
-流程固定为：
+Use Python 3.11 or later and an API key for an OpenAI-compatible model service that supports tool calling. Internet access is required for model requests and live Crossref searches. Run all commands from the repository root (the directory containing `requirements.txt`).
 
-```text
-PlannerAgent → SearchAgent → WriterAgent
+### 1. Create an environment and install dependencies
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
-学生可以观察固定顺序的消息传递、工具调用和报告生成。
+macOS / Linux:
 
-### 提高版 `advanced.py`
-
-流程增加审阅和一次修订：
-
-```text
-PlannerAgent → SearchAgent → WriterAgent → ReviewerAgent
-                                      ↘ 需要修改时回到 WriterAgent
+```bash
+python3 -m venv .venv
+./.venv/bin/python -m pip install -r requirements.txt
+if [ ! -f .env ]; then
+  cp .env.example .env
+fi
 ```
 
-提高版使用 `SelectorGroupChat`，由一个简单的路由函数根据消息来源和审阅结果选择下一位 Agent。审阅 Agent 还会检查报告中的 `[S1]` 引用是否来自本次检索结果。
+These commands use the virtual environment's Python directly, so activation is optional. An existing `.env` is preserved.
 
-## 快速开始
+### 2. Configure the model
 
-需要 Python 3.11 或更高版本。
+Open `.env` in a text editor and replace the API-key placeholder. The supplied template uses these settings:
 
-### 1. 创建虚拟环境并安装依赖
+```dotenv
+ARK_API_KEY=YOUR_API_KEY
+LLM_BASE_URL=https://ark.cn-beijing.volces.com/api/coding/v3
+LLM_MODEL=doubao-seed-2-1-turbo-260628
+LLM_MAX_TOKENS=1800
+LLM_TEMPERATURE=0.2
+```
+
+Use a model and endpoint available to your account. For another OpenAI-compatible provider, update `LLM_BASE_URL` and `LLM_MODEL`; `OPENAI_API_KEY` is also supported when `ARK_API_KEY` is unset. Keep your actual API key out of the submission.
+
+### 3. Check the API and run both tasks
+
+Run `check_api.py` first. Once it succeeds, run Task 1 and Task 2 sequentially with the same topic.
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\python.exe check_api.py
+.\.venv\Scripts\python.exe advanced.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
+.\.venv\Scripts\python.exe task2_improved.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
+```
+
+macOS / Linux:
+
+```bash
+./.venv/bin/python check_api.py
+./.venv/bin/python advanced.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
+./.venv/bin/python task2_improved.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
+```
+
+### 4. Inspect the results
+
+Each run prints its output paths and writes to a new `outputs/advanced_YYYYMMDD_HHMMSS/` directory. Both scripts currently use the `advanced_` prefix; use the printed path to distinguish their outputs. Check `report.md` for the research report, `review.md` for the review outcome, and `trace.jsonl` for actual agent messages and tool calls. The directory also includes `evidence_registry.json` and `run_summary.json`.
+
+The submitted runs are preserved separately in `outputs/task1_frozen_advanced_20261003_213736/` and `outputs/task2_frozen_advanced_20261003_212723/`. New runs can return different literature and report content.
+
+## 文件说明
+
+- `advanced.py`：课程原始 MAS，用作 Task 1 的基线系统。
+- `task2_improved.py`：Task 2 改进后的 MAS，在原架构中加入了闭环运行的 `CitationAuditAgent`。
+- `basic.py`：课程仓库提供的固定顺序基础版 MAS。
+- `research_tools.py`：包含文献检索工具和确定性的引用审计工具。
+- `common.py`：包含模型配置、日志记录、输出处理等公共函数。
+- `data/course_sources.json`：课程本地资料库。
+- `outputs/task1_frozen_advanced_20261003_213736/`：Task 1 最终冻结运行结果。
+- `outputs/task2_frozen_advanced_20261003_212723/`：Task 2 最终冻结运行结果。
+
+## 环境配置
+
+建议使用 Python 3.11 或更高版本。
+
+### 安装依赖
 
 Windows PowerShell：
 
@@ -41,7 +97,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-macOS 或 Linux：
+macOS / Linux：
 
 ```bash
 python3 -m venv .venv
@@ -49,76 +105,122 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. 配置接口
+## 配置 LLM API
 
-复制 `.env.example` 为 `.env`，填写自己的 `ARK_API_KEY`。本项目不会把密钥写入运行结果。
-
-默认配置为：
+将 `.env.example` 复制为 `.env`，并填写自己的 API Key：
 
 ```text
+ARK_API_KEY=YOUR_KEY_HERE
 LLM_BASE_URL=https://ark.cn-beijing.volces.com/api/coding/v3
 LLM_MODEL=doubao-seed-2-1-turbo-260628
+LLM_MAX_TOKENS=1800
+LLM_TEMPERATURE=0.2
 ```
 
-先检查接口：
+可以使用下面的命令检查 API 是否能够正常连接：
 
 ```powershell
 python check_api.py
 ```
 
-### 3. 运行基础版
+**不要将真实的 `.env` 文件提交到仓库或作业中。**
+
+本提交版本只保留 `.env.example`，不包含真实 API Key。
+
+## Task 1 - 原始 MAS
+
+运行命令：
 
 ```powershell
-python basic.py --topic "LLM-based multi-agent systems in industrial control"
+python advanced.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
 ```
 
-### 4. 运行提高版
+原始工作流：
+
+```text
+PlannerAgent
+  -> SearchAgent -> search_literature()
+  -> WriterAgent
+  -> ReviewerAgent
+       -> 如果需要修改，则返回 WriterAgent
+       -> REVIEW_APPROVED
+  -> 运行结束后执行 post-hoc audit_citations()
+```
+
+报告中使用的冻结运行结果为：
+
+`advanced_20261003_213736`
+
+## Task 2 - 改进后的 MAS
+
+运行命令：
 
 ```powershell
-python advanced.py --topic "LLM-based multi-agent systems in industrial control"
+python task2_improved.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
 ```
 
-每次运行会在 `outputs/` 下生成独立目录，包含：
+改进后的工作流：
 
-- `report.md`：最终中文技术报告
-- `trace.jsonl`：完整消息和工具调用轨迹
-- `evidence_registry.json`：本次运行使用的证据编号
-- `run_summary.json`：不含密钥的运行配置
-- 提高版另有 `review.md`：审阅意见和引用复核结果
+```text
+PlannerAgent
+  -> SearchAgent -> search_literature()
+  -> WriterAgent
+  -> CitationAuditAgent -> audit_citations()
+  -> ReviewerAgent
+       -> 如果需要修改，则返回 WriterAgent
+       -> CitationAuditAgent -> ReviewerAgent
+       -> REVIEW_APPROVED
+```
 
-## 工具和资料来源
+Task 2 的核心改进，是将引用审计从原来的**运行结束后的事后检查（post-hoc check）**改为**MAS 工作流内部的闭环验证（in-loop validation）**。
 
-`research_tools.py` 提供两个来源：
+新增的 `CitationAuditAgent` 会在 WriterAgent 完成报告后，调用确定性的 `audit_citations()` 工具检查报告中的 `[S#]` 引用编号是否合法。工具返回结果随后会进入共享对话上下文，并由 `ReviewerAgent` 继续进行语义层面的证据审查。
 
-1. 项目内的 `data/course_sources.json`，保证课堂演示至少有一组稳定资料。
-2. Crossref 实时检索，不需要额外密钥。Crossref 可能没有摘要，代码会如实标注，不会把标题当成摘要。
+因此，改进后的系统将两个不同层次的验证任务进行了分工：
 
-如果实时检索失败，报告仍可以使用课程资料库；完整结果会在 `trace.jsonl` 中显示。
+- `CitationAuditAgent`：检查引用编号是否合法、是否来自已经注册的检索证据；
+- `ReviewerAgent`：检查事实陈述是否真正受到对应证据支持，以及是否存在过度外推、缺失引用等问题。
 
-## 与课程内容的对应关系
+报告中使用的冻结运行结果为：
 
-| 课程概念 | 案例中的位置 |
-|---|---|
-| Agent | Planner、Searcher、Writer、Reviewer 各自负责一个目标 |
-| Harness | AutoGen 的消息循环、工具调用、终止条件和重试 |
-| MAS | 多个有明确角色的 Agent 共享任务上下文 |
-| 工具调用 | `search_literature` 和 `audit_citations` |
-| 工作流 | 基础版固定顺序，提高版带条件回路 |
-| 可靠性 | 引用编号、审阅、最大轮数和人工复核 |
+`advanced_20261003_212723`
 
-本案例不要求学生自己实现 MCP 或 A2A。协议可以作为课堂讨论的工程扩展，基础作业先把 Agent 分工、消息路由、工具和验证做清楚。
+## 运行输出文件
 
-## 官方参考
+每次运行都会在 `outputs/` 下生成一个新的结果目录，其中主要包含：
 
-- [AutoGen AgentChat 文档](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/)
-- [AutoGen Literature Review 示例](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/examples/literature-review.html)
-- [AutoGen Selector Group Chat 示例](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/selector-group-chat.html)
-- [Crossref REST API](https://api.crossref.org/swagger-ui/index.html)
+- `report.md`：最终技术调研报告；
+- `review.md`：最终审阅结果；
+- `trace.jsonl`：完整的 Agent 与 Tool 执行轨迹；
+- `evidence_registry.json`：本次运行注册的检索证据及对应 `[S#]` 编号；
+- `run_summary.json`：本次运行的模型设置和结果摘要，不包含 API Key。
 
-## 注意事项
+## 提交文档
 
-- 不要把真实 API 密钥写进代码、README 或 Git 仓库。
-- 建议先用一个具体主题测试，再扩大检索范围。
-- 提高版最多允许一次修订，并设置最大轮数，防止 Agent 无限对话。
-- LLM 生成的报告仍需要人工检查，尤其是引用、数字和因果结论。
-- AutoGen 和模型服务都会更新，课程发布时请固定依赖版本并保留本 README。
+同级目录 `docs/` 中包含：
+
+- `HW2_Report.typ`：作业总报告；
+- `HW2_Task1_Research_Report.typ`：Task 1 独立研究报告；
+- `HW2_Task2_Research_Report.typ`：Task 2 独立研究报告；
+- `assets/task1_run.png`：Task 1 冻结运行截图；
+- `assets/task2_run.png`：Task 2 冻结运行截图。
+
+例如，可以使用下面的命令编译 Typst 总报告：
+
+```powershell
+typst compile docs/HW2_Report.typ docs/HW2_Report.pdf
+```
+
+## Task 1 与 Task 2 的比较说明
+
+Task 1 和 Task 2 使用了相同的研究主题和相同的模型配置，因此可以用于比较两套 MAS 的工作流差异。
+
+不过，两次运行中的外部 Crossref 检索结果并不完全一致：Task 2 恰好检索到了一条包含完整摘要的相关文献，而 Task 1 检索到的相关记录主要只有题录信息。因此，最终作业报告**不将两次报告内容质量的全部差异归因于 Task 2 的架构改进**。
+
+本次比较主要关注以下方面：
+
+- MAS 架构和 Agent 分工；
+- 工具调用是否真正进入后续决策流程；
+- 引用与证据验证机制；
+- Reviewer 的修改与反馈路由；
+- 原始 MAS 的 post-hoc validation 与改进 MAS 的 in-loop validation 的差异。
