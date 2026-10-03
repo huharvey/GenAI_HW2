@@ -4,6 +4,5 @@
 .pytest_cache/
 .venv/
 __pycache__/
-outputs/*
 tmp/*
 output/*

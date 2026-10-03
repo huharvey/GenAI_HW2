@@ -1,0 +1,56 @@
+{
+  "S1": {
+    "title": "Agents4PLC: Automating Closed-loop PLC Code Generation and Verification",
+    "year": 2024,
+    "authors": "Agents4PLC authors",
+    "summary_cn": "用检索、规划、编码、验证和调试 Agent 构成 PLC 代码生成与验证闭环。",
+    "keywords": "PLC code generation verification LLM agents industrial control",
+    "url": "https://arxiv.org/abs/2410.14209",
+    "source_type": "课程资料库",
+    "citation_id": "S1"
+  },
+  "S2": {
+    "title": "DEEP REINFORCEMENT LEARNING FOR QUADROTOR TRAJECTORY CONTROL IN VIRTUAL ENVIRONMENTS",
+    "year": null,
+    "authors": "GUILHERME SIQUEIRA EDUARDO",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.17771/pucrio.acad.54178",
+    "doi": "10.17771/pucrio.acad.54178",
+    "source_type": "Crossref 实时检索",
+    "keywords": "reinforcement learning quadrotor trajectory tracking deep reinforcement learning quadrotor control",
+    "citation_id": "S2"
+  },
+  "S3": {
+    "title": "Anti-interference trajectory tracking control of quadrotor UAV based on reinforcement learning",
+    "year": 2024,
+    "authors": "Jinjie huang, Yifan Qu",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.2139/ssrn.4757475",
+    "doi": "10.2139/ssrn.4757475",
+    "source_type": "Crossref 实时检索",
+    "keywords": "reinforcement learning quadrotor trajectory tracking deep reinforcement learning quadrotor control",
+    "citation_id": "S3"
+  },
+  "S4": {
+    "title": "Optimal Trajectory Tracking Control for a Quadrotor UAV Based on Off-Policy Reinforcement Learning",
+    "year": 2024,
+    "authors": "Mehmet Karahan",
+    "summary_cn": "Crossref 未提供摘要，请打开原文核对。",
+    "url": "https://doi.org/10.1109/hora61326.2024.10550704",
+    "doi": "10.1109/hora61326.2024.10550704",
+    "source_type": "Crossref 实时检索",
+    "keywords": "reinforcement learning quadrotor trajectory tracking deep reinforcement learning quadrotor control",
+    "citation_id": "S4"
+  },
+  "S5": {
+    "title": "ANTI-INTERFERENCE TRAJECTORY TRACKING CONTROL OF QUADROTOR UAV BASED ON REINFORCEMENT LEARNING",
+    "year": 2026,
+    "authors": "PingAn Ren, EnHui Ren, YiFan Qu",
+    "summary_cn": "This study presents a quadrotor UAV tracking control algorithm that addresses the issues of parameter uncertainty and external disturbances during trajectory tracking. The algorithm combines the Q-Learning reinforcement learning algorithm with a nonsingular terminal sliding mode controller. Firstly, a four-rotor UAV model based on tracking error is defined, and the coupling and external interference between channels are converted into lumped interference. Extended state observers are designed for estimation and compensation of lumped interference by the outer loop position subsystem and the inner loop attitude subsystem. At the same time, a fast non-singular terminal sliding mode UAV controller is constructed, which includes an outer loop position controller and an inner loop attitude controller. Then, a Q-learning algorithm based on fuzzy strategy is proposed to realize the adaptive adjustment of the key parameters of the controller and the observer. By designing the reward function, the Q values of the UAV under different flight states are iteratively optimized and the Q table is constantly updated. Finally, the trained Q table is used for drone control. The algorithm can not only save the complicated process of manual parameter adjustment, but also realize the adaptive adjustment of key parameters in the face of different flight environments and flight states. The simulation and comparison experiments show that the proposed algorithm has a higher degree of fit with the reference trajectory in the trajectory tracking control process and has good robustness.",
+    "url": "https://doi.org/10.61784/jcsee3115",
+    "doi": "10.61784/jcsee3115",
+    "source_type": "Crossref 实时检索",
+    "keywords": "reinforcement learning quadrotor trajectory tracking deep reinforcement learning quadrotor control",
+    "citation_id": "S5"
+  }
+}
