@@ -1,39 +1,29 @@
-# AutoGen å¤šæ™ºèƒ½ä½“æŠ€æœ¯è°ƒç ”åŠ©æ‰‹
+# Gen AI ×÷Òµ 2 - Agent Óë¶àÖÇÄÜÌåÏµÍ³
 
-è¿™æ˜¯ä¸€ä¸ªé¢å‘è¯¾ç¨‹æ•™å­¦çš„ LLM-based å¤šæ™ºèƒ½ä½“æ¡ˆä¾‹ã€‚å­¦ç”Ÿè¾“å…¥ä¸€ä¸ªæŠ€æœ¯ä¸»é¢˜ï¼Œå¤šä¸ª Agent åä½œæ£€ç´¢èµ„æ–™ã€å†™ä½œï¼Œå¹¶åœ¨æé«˜ç‰ˆä¸­å®¡é˜…å’Œä¿®è®¢æŠ¥å‘Šã€‚
+±¾²Ö¿â°üº¬¿Î³ÌÌá¹©µÄÔ­Ê¼¶àÖÇÄÜÌåÏµÍ³£¨ÓÃÓÚ Task 1£©£¬ÒÔ¼°ÔÚÆä»ù´¡ÉÏ¸Ä½øºóµÄ¶àÖÇÄÜÌåÏµÍ³£¨ÓÃÓÚ Task 2£©¡£
 
-æ¡ˆä¾‹åŸºäº Microsoft AutoGen çš„ AgentChat APIï¼Œä½¿ç”¨ OpenAI å…¼å®¹æ¥å£ã€‚æœ¬é¡¹ç›®é»˜è®¤é€‚é…ç«å±±å¼•æ“ Ark Coding APIï¼Œä¹Ÿå¯ä»¥æ›¿æ¢ä¸ºå…¶ä»–å…¼å®¹æœåŠ¡ã€‚
+**Task 1 Óë Task 2 ¶³½áÔËĞĞËùÊ¹ÓÃµÄÑĞ¾¿Ö÷Ìâ£º**
 
-## ä¸¤ä¸ªç‰ˆæœ¬
+`Application of reinforcement learning to quadrotor trajectory tracking`
 
-### åŸºç¡€ç‰ˆ `basic.py`
+## ÎÄ¼şËµÃ÷
 
-æµç¨‹å›ºå®šä¸ºï¼š
+- `advanced.py`£º¿Î³ÌÔ­Ê¼ MAS£¬ÓÃ×÷ Task 1 µÄ»ùÏßÏµÍ³¡£
+- `task2_improved.py`£ºTask 2 ¸Ä½øºóµÄ MAS£¬ÔÚÔ­¼Ü¹¹ÖĞ¼ÓÈëÁË±Õ»·ÔËĞĞµÄ `CitationAuditAgent`¡£
+- `basic.py`£º¿Î³Ì²Ö¿âÌá¹©µÄ¹Ì¶¨Ë³Ğò»ù´¡°æ MAS¡£
+- `research_tools.py`£º°üº¬ÎÄÏ×¼ìË÷¹¤¾ßºÍÈ·¶¨ĞÔµÄÒıÓÃÉó¼Æ¹¤¾ß¡£
+- `common.py`£º°üº¬Ä£ĞÍÅäÖÃ¡¢ÈÕÖ¾¼ÇÂ¼¡¢Êä³ö´¦ÀíµÈ¹«¹²º¯Êı¡£
+- `data/course_sources.json`£º¿Î³Ì±¾µØ×ÊÁÏ¿â¡£
+- `outputs/task1_frozen_advanced_20261003_213736/`£ºTask 1 ×îÖÕ¶³½áÔËĞĞ½á¹û¡£
+- `outputs/task2_frozen_advanced_20261003_212723/`£ºTask 2 ×îÖÕ¶³½áÔËĞĞ½á¹û¡£
 
-```text
-PlannerAgent â†’ SearchAgent â†’ WriterAgent
-```
+## »·¾³ÅäÖÃ
 
-å­¦ç”Ÿå¯ä»¥è§‚å¯Ÿå›ºå®šé¡ºåºçš„æ¶ˆæ¯ä¼ é€’ã€å·¥å…·è°ƒç”¨å’ŒæŠ¥å‘Šç”Ÿæˆã€‚
+½¨ÒéÊ¹ÓÃ Python 3.11 »ò¸ü¸ß°æ±¾¡£
 
-### æé«˜ç‰ˆ `advanced.py`
+### °²×°ÒÀÀµ
 
-æµç¨‹å¢åŠ å®¡é˜…å’Œä¸€æ¬¡ä¿®è®¢ï¼š
-
-```text
-PlannerAgent â†’ SearchAgent â†’ WriterAgent â†’ ReviewerAgent
-                                      â†˜ éœ€è¦ä¿®æ”¹æ—¶å›åˆ° WriterAgent
-```
-
-æé«˜ç‰ˆä½¿ç”¨ `SelectorGroupChat`ï¼Œç”±ä¸€ä¸ªç®€å•çš„è·¯ç”±å‡½æ•°æ ¹æ®æ¶ˆæ¯æ¥æºå’Œå®¡é˜…ç»“æœé€‰æ‹©ä¸‹ä¸€ä½ Agentã€‚å®¡é˜… Agent è¿˜ä¼šæ£€æŸ¥æŠ¥å‘Šä¸­çš„ `[S1]` å¼•ç”¨æ˜¯å¦æ¥è‡ªæœ¬æ¬¡æ£€ç´¢ç»“æœã€‚
-
-## å¿«é€Ÿå¼€å§‹
-
-éœ€è¦ Python 3.11 æˆ–æ›´é«˜ç‰ˆæœ¬ã€‚
-
-### 1. åˆ›å»ºè™šæ‹Ÿç¯å¢ƒå¹¶å®‰è£…ä¾èµ–
-
-Windows PowerShellï¼š
+Windows PowerShell£º
 
 ```powershell
 python -m venv .venv
@@ -41,7 +31,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-macOS æˆ– Linuxï¼š
+macOS / Linux£º
 
 ```bash
 python3 -m venv .venv
@@ -49,76 +39,121 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. é…ç½®æ¥å£
+## ÅäÖÃ LLM API
 
-å¤åˆ¶ `.env.example` ä¸º `.env`ï¼Œå¡«å†™è‡ªå·±çš„ `ARK_API_KEY`ã€‚æœ¬é¡¹ç›®ä¸ä¼šæŠŠå¯†é’¥å†™å…¥è¿è¡Œç»“æœã€‚
-
-é»˜è®¤é…ç½®ä¸ºï¼š
+½« `.env.example` ¸´ÖÆÎª `.env`£¬²¢ÌîĞ´×Ô¼ºµÄ API Key£º
 
 ```text
+ARK_API_KEY=YOUR_KEY_HERE
 LLM_BASE_URL=https://ark.cn-beijing.volces.com/api/coding/v3
 LLM_MODEL=doubao-seed-2-1-turbo-260628
+LLM_MAX_TOKENS=1800
+LLM_TEMPERATURE=0.2
 ```
 
-å…ˆæ£€æŸ¥æ¥å£ï¼š
+¿ÉÒÔÊ¹ÓÃÏÂÃæµÄÃüÁî¼ì²é API ÊÇ·ñÄÜ¹»Õı³£Á¬½Ó£º
 
 ```powershell
 python check_api.py
 ```
 
-### 3. è¿è¡ŒåŸºç¡€ç‰ˆ
+**²»Òª½«ÕæÊµµÄ `.env` ÎÄ¼şÌá½»µ½²Ö¿â»ò×÷ÒµÖĞ¡£**  
+±¾Ìá½»°æ±¾Ö»±£Áô `.env.example`£¬²»°üº¬ÕæÊµ API Key¡£
+
+## Task 1 - Ô­Ê¼ MAS
+
+ÔËĞĞÃüÁî£º
 
 ```powershell
-python basic.py --topic "LLM-based multi-agent systems in industrial control"
+python advanced.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
 ```
 
-### 4. è¿è¡Œæé«˜ç‰ˆ
+Ô­Ê¼¹¤×÷Á÷£º
+
+```text
+PlannerAgent
+  -> SearchAgent -> search_literature()
+  -> WriterAgent
+  -> ReviewerAgent
+       -> Èç¹ûĞèÒªĞŞ¸Ä£¬Ôò·µ»Ø WriterAgent
+       -> REVIEW_APPROVED
+  -> ÔËĞĞ½áÊøºóÖ´ĞĞ post-hoc audit_citations()
+```
+
+±¨¸æÖĞÊ¹ÓÃµÄ¶³½áÔËĞĞ½á¹ûÎª£º
+
+`advanced_20261003_213736`
+
+## Task 2 - ¸Ä½øºóµÄ MAS
+
+ÔËĞĞÃüÁî£º
 
 ```powershell
-python advanced.py --topic "LLM-based multi-agent systems in industrial control"
+python task2_improved.py --topic "Application of reinforcement learning to quadrotor trajectory tracking"
 ```
 
-æ¯æ¬¡è¿è¡Œä¼šåœ¨ `outputs/` ä¸‹ç”Ÿæˆç‹¬ç«‹ç›®å½•ï¼ŒåŒ…å«ï¼š
+¸Ä½øºóµÄ¹¤×÷Á÷£º
 
-- `report.md`ï¼šæœ€ç»ˆä¸­æ–‡æŠ€æœ¯æŠ¥å‘Š
-- `trace.jsonl`ï¼šå®Œæ•´æ¶ˆæ¯å’Œå·¥å…·è°ƒç”¨è½¨è¿¹
-- `evidence_registry.json`ï¼šæœ¬æ¬¡è¿è¡Œä½¿ç”¨çš„è¯æ®ç¼–å·
-- `run_summary.json`ï¼šä¸å«å¯†é’¥çš„è¿è¡Œé…ç½®
-- æé«˜ç‰ˆå¦æœ‰ `review.md`ï¼šå®¡é˜…æ„è§å’Œå¼•ç”¨å¤æ ¸ç»“æœ
+```text
+PlannerAgent
+  -> SearchAgent -> search_literature()
+  -> WriterAgent
+  -> CitationAuditAgent -> audit_citations()
+  -> ReviewerAgent
+       -> Èç¹ûĞèÒªĞŞ¸Ä£¬Ôò·µ»Ø WriterAgent
+       -> CitationAuditAgent -> ReviewerAgent
+       -> REVIEW_APPROVED
+```
 
-## å·¥å…·å’Œèµ„æ–™æ¥æº
+Task 2 µÄºËĞÄ¸Ä½ø£¬ÊÇ½«ÒıÓÃÉó¼Æ´ÓÔ­À´µÄ**ÔËĞĞ½áÊøºóµÄÊÂºó¼ì²é£¨post-hoc check£©**¸ÄÎª**MAS ¹¤×÷Á÷ÄÚ²¿µÄ±Õ»·ÑéÖ¤£¨in-loop validation£©**¡£
 
-`research_tools.py` æä¾›ä¸¤ä¸ªæ¥æºï¼š
+ĞÂÔöµÄ `CitationAuditAgent` »áÔÚ WriterAgent Íê³É±¨¸æºó£¬µ÷ÓÃÈ·¶¨ĞÔµÄ `audit_citations()` ¹¤¾ß¼ì²é±¨¸æÖĞµÄ `[S#]` ÒıÓÃ±àºÅÊÇ·ñºÏ·¨¡£¹¤¾ß·µ»Ø½á¹ûËæºó»á½øÈë¹²Ïí¶Ô»°ÉÏÏÂÎÄ£¬²¢ÓÉ `ReviewerAgent` ¼ÌĞø½øĞĞÓïÒå²ãÃæµÄÖ¤¾İÉó²é¡£
 
-1. é¡¹ç›®å†…çš„ `data/course_sources.json`ï¼Œä¿è¯è¯¾å ‚æ¼”ç¤ºè‡³å°‘æœ‰ä¸€ç»„ç¨³å®šèµ„æ–™ã€‚
-2. Crossref å®æ—¶æ£€ç´¢ï¼Œä¸éœ€è¦é¢å¤–å¯†é’¥ã€‚Crossref å¯èƒ½æ²¡æœ‰æ‘˜è¦ï¼Œä»£ç ä¼šå¦‚å®æ ‡æ³¨ï¼Œä¸ä¼šæŠŠæ ‡é¢˜å½“æˆæ‘˜è¦ã€‚
+Òò´Ë£¬¸Ä½øºóµÄÏµÍ³½«Á½¸ö²»Í¬²ã´ÎµÄÑéÖ¤ÈÎÎñ½øĞĞÁË·Ö¹¤£º
 
-å¦‚æœå®æ—¶æ£€ç´¢å¤±è´¥ï¼ŒæŠ¥å‘Šä»å¯ä»¥ä½¿ç”¨è¯¾ç¨‹èµ„æ–™åº“ï¼›å®Œæ•´ç»“æœä¼šåœ¨ `trace.jsonl` ä¸­æ˜¾ç¤ºã€‚
+- `CitationAuditAgent`£º¼ì²éÒıÓÃ±àºÅÊÇ·ñºÏ·¨¡¢ÊÇ·ñÀ´×ÔÒÑ¾­×¢²áµÄ¼ìË÷Ö¤¾İ£»
+- `ReviewerAgent`£º¼ì²éÊÂÊµ³ÂÊöÊÇ·ñÕæÕıÊÜµ½¶ÔÓ¦Ö¤¾İÖ§³Ö£¬ÒÔ¼°ÊÇ·ñ´æÔÚ¹ı¶ÈÍâÍÆ¡¢È±Ê§ÒıÓÃµÈÎÊÌâ¡£
 
-## ä¸è¯¾ç¨‹å†…å®¹çš„å¯¹åº”å…³ç³»
+±¨¸æÖĞÊ¹ÓÃµÄ¶³½áÔËĞĞ½á¹ûÎª£º
 
-| è¯¾ç¨‹æ¦‚å¿µ | æ¡ˆä¾‹ä¸­çš„ä½ç½® |
-|---|---|
-| Agent | Plannerã€Searcherã€Writerã€Reviewer å„è‡ªè´Ÿè´£ä¸€ä¸ªç›®æ ‡ |
-| Harness | AutoGen çš„æ¶ˆæ¯å¾ªç¯ã€å·¥å…·è°ƒç”¨ã€ç»ˆæ­¢æ¡ä»¶å’Œé‡è¯• |
-| MAS | å¤šä¸ªæœ‰æ˜ç¡®è§’è‰²çš„ Agent å…±äº«ä»»åŠ¡ä¸Šä¸‹æ–‡ |
-| å·¥å…·è°ƒç”¨ | `search_literature` å’Œ `audit_citations` |
-| å·¥ä½œæµ | åŸºç¡€ç‰ˆå›ºå®šé¡ºåºï¼Œæé«˜ç‰ˆå¸¦æ¡ä»¶å›è·¯ |
-| å¯é æ€§ | å¼•ç”¨ç¼–å·ã€å®¡é˜…ã€æœ€å¤§è½®æ•°å’Œäººå·¥å¤æ ¸ |
+`advanced_20261003_212723`
 
-æœ¬æ¡ˆä¾‹ä¸è¦æ±‚å­¦ç”Ÿè‡ªå·±å®ç° MCP æˆ– A2Aã€‚åè®®å¯ä»¥ä½œä¸ºè¯¾å ‚è®¨è®ºçš„å·¥ç¨‹æ‰©å±•ï¼ŒåŸºç¡€ä½œä¸šå…ˆæŠŠ Agent åˆ†å·¥ã€æ¶ˆæ¯è·¯ç”±ã€å·¥å…·å’ŒéªŒè¯åšæ¸…æ¥šã€‚
+## ÔËĞĞÊä³öÎÄ¼ş
 
-## å®˜æ–¹å‚è€ƒ
+Ã¿´ÎÔËĞĞ¶¼»áÔÚ `outputs/` ÏÂÉú³ÉÒ»¸öĞÂµÄ½á¹ûÄ¿Â¼£¬ÆäÖĞÖ÷Òª°üº¬£º
 
-- [AutoGen AgentChat æ–‡æ¡£](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/)
-- [AutoGen Literature Review ç¤ºä¾‹](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/examples/literature-review.html)
-- [AutoGen Selector Group Chat ç¤ºä¾‹](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/selector-group-chat.html)
-- [Crossref REST API](https://api.crossref.org/swagger-ui/index.html)
+- `report.md`£º×îÖÕ¼¼Êõµ÷ÑĞ±¨¸æ£»
+- `review.md`£º×îÖÕÉóÔÄ½á¹û£»
+- `trace.jsonl`£ºÍêÕûµÄ Agent Óë Tool Ö´ĞĞ¹ì¼££»
+- `evidence_registry.json`£º±¾´ÎÔËĞĞ×¢²áµÄ¼ìË÷Ö¤¾İ¼°¶ÔÓ¦ `[S#]` ±àºÅ£»
+- `run_summary.json`£º±¾´ÎÔËĞĞµÄÄ£ĞÍÉèÖÃºÍ½á¹ûÕªÒª£¬²»°üº¬ API Key¡£
 
-## æ³¨æ„äº‹é¡¹
+## Ìá½»ÎÄµµ
 
-- ä¸è¦æŠŠçœŸå® API å¯†é’¥å†™è¿›ä»£ç ã€README æˆ– Git ä»“åº“ã€‚
-- å»ºè®®å…ˆç”¨ä¸€ä¸ªå…·ä½“ä¸»é¢˜æµ‹è¯•ï¼Œå†æ‰©å¤§æ£€ç´¢èŒƒå›´ã€‚
-- æé«˜ç‰ˆæœ€å¤šå…è®¸ä¸€æ¬¡ä¿®è®¢ï¼Œå¹¶è®¾ç½®æœ€å¤§è½®æ•°ï¼Œé˜²æ­¢ Agent æ— é™å¯¹è¯ã€‚
-- LLM ç”Ÿæˆçš„æŠ¥å‘Šä»éœ€è¦äººå·¥æ£€æŸ¥ï¼Œå°¤å…¶æ˜¯å¼•ç”¨ã€æ•°å­—å’Œå› æœç»“è®ºã€‚
-- AutoGen å’Œæ¨¡å‹æœåŠ¡éƒ½ä¼šæ›´æ–°ï¼Œè¯¾ç¨‹å‘å¸ƒæ—¶è¯·å›ºå®šä¾èµ–ç‰ˆæœ¬å¹¶ä¿ç•™æœ¬ READMEã€‚
+Í¬¼¶Ä¿Â¼ `docs/` ÖĞ°üº¬£º
+
+- `HW2_Report.typ`£º×÷Òµ×Ü±¨¸æ£»
+- `HW2_Task1_Research_Report.typ`£ºTask 1 ¶ÀÁ¢ÑĞ¾¿±¨¸æ£»
+- `HW2_Task2_Research_Report.typ`£ºTask 2 ¶ÀÁ¢ÑĞ¾¿±¨¸æ£»
+- `assets/task1_run.png`£ºTask 1 ¶³½áÔËĞĞ½ØÍ¼£»
+- `assets/task2_run.png`£ºTask 2 ¶³½áÔËĞĞ½ØÍ¼¡£
+
+ÀıÈç£¬¿ÉÒÔÊ¹ÓÃÏÂÃæµÄÃüÁî±àÒë Typst ×Ü±¨¸æ£º
+
+```powershell
+typst compile docs/HW2_Report.typ docs/HW2_Report.pdf
+```
+
+## Task 1 Óë Task 2 µÄ±È½ÏËµÃ÷
+
+Task 1 ºÍ Task 2 Ê¹ÓÃÁËÏàÍ¬µÄÑĞ¾¿Ö÷ÌâºÍÏàÍ¬µÄÄ£ĞÍÅäÖÃ£¬Òò´Ë¿ÉÒÔÓÃÓÚ±È½ÏÁ½Ì× MAS µÄ¹¤×÷Á÷²îÒì¡£
+
+²»¹ı£¬Á½´ÎÔËĞĞÖĞµÄÍâ²¿ Crossref ¼ìË÷½á¹û²¢²»ÍêÈ«Ò»ÖÂ£ºTask 2 Ç¡ºÃ¼ìË÷µ½ÁËÒ»Ìõ°üº¬ÍêÕûÕªÒªµÄÏà¹ØÎÄÏ×£¬¶ø Task 1 ¼ìË÷µ½µÄÏà¹Ø¼ÇÂ¼Ö÷ÒªÖ»ÓĞÌâÂ¼ĞÅÏ¢¡£Òò´Ë£¬×îÖÕ×÷Òµ±¨¸æ**²»½«Á½´Î±¨¸æÄÚÈİÖÊÁ¿µÄÈ«²¿²îÒì¹éÒòÓÚ Task 2 µÄ¼Ü¹¹¸Ä½ø**¡£
+
+±¾´Î±È½ÏÖ÷Òª¹Ø×¢ÒÔÏÂ·½Ãæ£º
+
+- MAS ¼Ü¹¹ºÍ Agent ·Ö¹¤£»
+- ¹¤¾ßµ÷ÓÃÊÇ·ñÕæÕı½øÈëºóĞø¾ö²ßÁ÷³Ì£»
+- ÒıÓÃÓëÖ¤¾İÑéÖ¤»úÖÆ£»
+- Reviewer µÄĞŞ¸ÄÓë·´À¡Â·ÓÉ£»
+- Ô­Ê¼ MAS µÄ post-hoc validation Óë¸Ä½ø MAS µÄ in-loop validation µÄ²îÒì¡£
